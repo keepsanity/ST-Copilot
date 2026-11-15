@@ -584,8 +584,14 @@
 /* ── Actions Bar ─────────────────────────────────────────────── */
 
 .scp-actions-bar {
-    flex-shrink: 0; display: flex; align-items: center; gap: 6px;
+    flex-shrink: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 6px;
     padding: 5px 10px; background: var(--scp-toolbar-bg); border-top: var(--scp-border);
+}
+.scp-actions-bar > .scp-action-btn,
+.scp-actions-bar > .scp-token-count,
+.scp-actions-bar > .scp-msg-count {
+    flex-shrink: 0;
+    white-space: nowrap;
 }
 .scp-action-btn {
     display: flex; align-items: center; gap: 5px; padding: 3px 9px;
@@ -604,6 +610,29 @@
 .scp-action-btn svg { overflow: visible; flex-shrink: 0; }
 .scp-flex-grow { flex: 1; }
 .scp-msg-count { font-size: 10px; color: var(--scp-text-muted); }
+
+@media screen and (max-width: 600px) {
+    .scp-actions-bar {
+        flex-wrap: nowrap;
+        gap: 4px;
+        padding-inline: 6px;
+    }
+    .scp-actions-bar > .scp-action-btn {
+        padding-inline: 6px;
+    }
+    .scp-actions-bar > .scp-flex-grow,
+    .scp-actions-bar > .scp-msg-count {
+        display: none;
+    }
+    .scp-actions-bar > .scp-token-count {
+        flex: 1 1 0;
+        min-width: 0;
+        margin-right: 0;
+        text-align: right;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
 
 /* ── Input Row ───────────────────────────────────────────────── */
 
